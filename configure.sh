@@ -6,4 +6,4 @@ if [[ $dans = "" ]]; then
 	exit 1
 fi
 
-sed -i 's/NGINX_R_DOMEN/'$dans'/g' conf/nginx/nginx.conf
+sed -i 's/R_DOMEN/'$dans'/g' conf/nginx/nginx.conf

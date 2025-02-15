@@ -27,7 +27,7 @@ services:
       - ./conf/nginx/www:/var/www/certbot
     networks:
       - backend
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; chmod 644 /etc/letsencrypt/archive/iotm.tk/*.pem; sleep 12h & wait $${!}; done;'"
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; chmod 644 /etc/letsencrypt/archive/R_DOMEN/*.pem; sleep 12h & wait $${!}; done;'"
     depends_on:
       - rabbit
 
@@ -52,7 +52,7 @@ services:
       - backend
     volumes:
       - ./conf/rabbit:/etc/rabbitmq
-      - ./conf/certbot/archive/iotm.tk:/etc/rabbitmq/certs
+      - ./conf/certbot/archive/R_DOMEN:/etc/rabbitmq/certs
       - ./data/rabbit:/var/lib/rabbitmq
       - ./logs/rabbit:/var/log/rabbitmq
     depends_on:
@@ -100,8 +100,8 @@ services:
       # https://grafana.com/plugins/yesoreyeram-boomtable-panel
       - GF_INSTALL_PLUGINS=flant-statusmap-panel,grafana-piechart-panel,grafana-polystat-panel,jdbranham-diagram-panel,michaeldmoore-multistat-panel,vonage-status-panel,yesoreyeram-boomtable-panel,camptocamp-prometheus-alertmanager-datasource,natel-influx-admin-panel
       - GF_SECURITY_COOKIE_SECURE="true"
-      - GF_SERVER_DOMAIN=iotm.tk
-      - GF_SERVER_ROOT_URL=https://iotm.tk/manager/grafana/
+      - GF_SERVER_DOMAIN=R_DOMEN
+      - GF_SERVER_ROOT_URL=https://R_DOMEN/manager/grafana/
       - GF_DEFAULT_INSTANCE_NAME=iotm
       - GF_AUTH_PROXY_ENABLED=false
       - GF_USERS_ALLOW_SIGN_UP=false
@@ -125,7 +125,7 @@ services:
       - --web.console.libraries=/usr/share/prometheus/console_libraries
       - --web.console.templates=/usr/share/prometheus/consoles
       - --web.route-prefix=/manager/prometheus
-      - --web.external-url=https://iotm.tk/manager/prometheus
+      - --web.external-url=https://R_DOMEN/manager/prometheus
     depends_on:
       - node-exporter
 
