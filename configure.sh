@@ -7,3 +7,4 @@ if [[ $dans = "" ]]; then
 fi
 
 sed -i 's/R_DOMEN/'$dans'/g' conf/nginx/nginx.conf
+sed -i 's/R_DOMEN/'$dans'/g' docker-compose.yml
